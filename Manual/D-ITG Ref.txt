@@ -1,0 +1,19 @@
+D-ITG Init
+
+// Mininet VM (main) [if isntalled alr do the wget part]
+1. sudo apt-get install unzip
+2. sudo apt-get install g++
+3. wget   http://traffic.comics.unina.it/software/ITG/codice/D-ITG-2.8.1-r1023-src.zip
+4. unzip  D-ITG-2.8.1-r1023-src.zip
+5. cd  D-ITG-2.8.1-r1023/src
+6. sudo make
+
+// Putty w/ X11 forwarding 
+1. loging port 22 -> 192.168.56.101 (mininet's ip)
+2. cd  ~/pox
+3. ./pox.py forwarding.l2_learning
+
+// Mininet VM (main) do another terminal
+
+h1 -> 10.1.1.1
+h2 -> 10.1.1.2

@@ -19,15 +19,15 @@ Academic Year 2022
 7. Anaconda for trainning Data https://www.anaconda.com/products/distribution
 
 ## Problems that we've met and fixed
-1. Installation package from internet
+###### 1. Installation package from internet
 Since VM does not have network directly connected, so we must provide a network for it. By using *sudo dhclient eth1*, and then we checked network with *ifconfig*. Afterwards, we can ping google.com or 8.8.8.8 .
 
-2. Flowmanager display on port http.
+###### 2. Flowmanager display on port http.
 The firefox angine cannot display switches or it gives bugs, we should use 'Chrome' or 'Edge' instead.
 
-3. Don't for get to install Ubuntu desktop!
+###### 3. Don't for get to install Ubuntu desktop!
 we must have installed the gui for traffic monitor and network components. By using *sudo apt-get install ubuntu-desktop* .
 
-4. Mininet cannot run controller with a port.
+###### 4. Mininet cannot run controller with a port.
 cd in ryu directory and run this command to fix it or restart controller *PYTHONPATH=. ./bin/ryu-manager ryu/app/simple_switch.py*.
 

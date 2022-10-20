@@ -31,3 +31,13 @@ we must have installed the gui for traffic monitor and network components. By us
 ###### 4. Mininet cannot run controller with a port.
 cd in ryu directory and run this command to fix it or restart controller *PYTHONPATH=. ./bin/ryu-manager ryu/app/simple_switch.py*.
 
+## Steps - Running Mininet and Traffic generator
+1. Start mininet topology via 
+###### sudo mn --custom projectTopo2.py --topo mytopo --controller=remote,ip=192.168.56.101 --switch ovsk,stp=1,protocols=OpenFlow13 --mac --link tc,bw=10
+2. In mininet, use *xterm c0* for open a controller terminal. Then change directory to ryu/ryu/app and type the command.(use ovsk switch and stp togerther for prevent loop)
+###### ryu-manager simple_switch_stp_13.py
+3. After that. use *pingall* command in mininet terminal to checking a broadcast storm packet.
+4. As you can see, STP is doing their job. Now, CTRL+C in a controller terminal. and use this command in *ryu/ryu/app* directory.
+###### ryu-manager simple_monitor_13.py
+
+

@@ -40,4 +40,18 @@ cd in ryu directory and run this command to fix it or restart controller *PYTHON
 4. As you can see, STP is doing their job. Now, CTRL+C in a controller terminal. and use this command in *ryu/ryu/app* directory.
 ###### ryu-manager simple_monitor_13.py
 
+## SDN Components 
+###### 1. Mininet Emulator v.2.3.0
+###### 2. Ryu SDN Framework
+###### 3. D-ITG Traffic Generator
+
+## D-ITG Settup [Source - H1,H2,H3] [Destination - H4,H5,H6]
+1. ./ITGSend -a "Dest ip" -u 250 1000 -T UDP -t 60000
+2. .ITGRecv -l "File.log"
+
+## Performance Evaluation
+1. Throughput
+2. Delay
+3. Compacitance
+4. Bi-Directional LSTM vs LSTM
 

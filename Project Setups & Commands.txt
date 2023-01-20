@@ -36,7 +36,7 @@ ans : sudo -i
 
 TOPO Commands
 - sudo mn --custom new.py --topo mytopo --controller=remote,ip=192.168.56.101 --switch ovsk,protocols=OpenFlow13 --mac
-- sudo mn --custom projectTopo2.py --topo mytopo --controller=remote,ip=192.168.56.101 --switch ovsbr,stp=1,protocols=OpenFlow13 --mac --link tc,bw=10
+- sudo mn --custom paperTopo.py --topo mytopo --controller=remote,ip=192.168.56.101 --switch ovsbr,stp=1,protocols=OpenFlow13 --mac --link tc,bw=10
 
 Ryu Traffic Monitor
 ans : ryu-manager --verbose ryu.app.simple_monitor_13 (use --verbose for debug mode)

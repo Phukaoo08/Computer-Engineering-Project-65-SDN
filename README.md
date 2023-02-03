@@ -52,6 +52,6 @@ cd in ryu directory and run this command to fix it or restart controller *PYTHON
 ## Performance Evaluation
 1. Throughput
 2. Delay
-3. Compacitance
-4. Bi-Directional LSTM vs LSTM
+3. Packet Loss
+4. Bi-Directional LSTM vs LSTM vs GRU
 

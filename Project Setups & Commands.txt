@@ -25,7 +25,7 @@ unzip DITG
 cd DITG/src
 sudo make
 
-7.install openswitch
+7.install openswitchsu
 sudo apt-get install openvswitch-switch
 sudo service openvswitch-switch start
 
@@ -36,7 +36,9 @@ ans : sudo -i
 
 TOPO Commands
 - sudo mn --custom new.py --topo mytopo --controller=remote,ip=192.168.56.101 --switch ovsk,protocols=OpenFlow13 --mac
-- sudo mn --custom paperTopo.py --topo mytopo --controller=remote,ip=192.168.56.101 --switch ovsbr,stp=1,protocols=OpenFlow13 --mac --link tc,bw=10
+- sudo mn --custom paperTopo.py --topo mytopo --controller=remote,ip=192.168.56.101 --switch ovsk,stp=1,protocols=OpenFlow13 --mac --link tc,bw=10
+- sudo mn --custom paperTopo.py --topo mytopo --controller=remote,ip=127.0.0.1 --mac -i 192.168.1.0/24 --switch ovsk,stp=1,protocols=OpenFlow13 --mac --link tc,bw=10
+- sudo python customtopo.py --controller=remote,ip=127.0.0.1 --mac -i 192.168.1.0/24 --switch -ovsk,protocols=OpenFlow13 --mac --link tc,bw=10
 
 Ryu Traffic Monitor
 ans : ryu-manager --verbose ryu.app.simple_monitor_13 (use --verbose for debug mode)
@@ -59,8 +61,81 @@ Checking Topology with gui viewer
 ans : ryu/ryu/app ryu run gui_topology/gui_topology.py --observe-links
 
 Ryu Monitoring
-ans : xterm c0 -> ryu/ryu/app ryu-manager simple_monitor_13.py
+ans :  app ryu-manager simple_monitor_13.py
+
+
+access root folder 
+ans : sudo -i nautilus
 
 ------------------------------------------------------------------------ D-ITG SET----------------------------------------------------
+Sender Commands :
+-l logfile
+-m owdm (one-way delay meter) || rttm (round-trip time meter)
+-t generation duration (default : 10000 ms)
+-sa source address (Set by OS)
+-a destination address 
+-rp destination port
+-T protorol (UDP, TCP, ICMP, SCTP, DCCP)
+-C rate (default : 1000 pkts/sec)
+-c pkt size (default : 512 bytes)
+
+Reciever Commands :
+-Sp port no. (default : 9000)
+-l logfile
+
+Single Flow : one traffic flow ||||||| Multi Flow :
+
+ของพี่ : Sender h1 h2 h3 // Receiver h4 h5 h6
+EX : ./ITGSend -a 10.0.0.4 -O 200 -c 1500 -T UDP -t 60000
 
 
+
+// Host1 to Host4 [UDP]
+1st
+AVG bitrate = 6547.830 Kbit/s
+AVG packet rate = 545.65 pkt/s
+
+2nd
+AVG bitrate = 9051.715 Kbit/s
+AVG packet rate = 754.31 pkt/s
+
+3rd
+AVG bitrate = 8874.31 Kbit/s
+AVG packet rate = 739.526 pkt/s
+
+4th
+AVG bitrate = 9110.478 Kbit/s
+AVG packet rate = 759.20 pkt/s
+
+5th
+AVG bitrate = 4705.919 Kbit/s
+AVG packet rate = 392.16 pkt/s
+
+6th
+AVG bitrate = 4968.225 Kbit/s
+AVG packet rate = 414.01 pkt/s
+
+7th
+AVG bitrate = 8753.13 Kbit/s
+AVG packet rate = 729.42 pkt/s
+
+8th
+AVG bitrate = 9102.594 Kbit/s
+AVG packet rate = 758.55 pkt/s
+
+9th
+AVG bitrate = 8258.235 Kbit/s
+AVG packet rate = 688.18 pkt/s
+
+10th
+AVG bitrate = 8150.89 Kbit/s
+AVG packet rate = 679.23 pkt/s
+
+-a 10.0.0.4 -rp 9501 -
+
+
+bit/pkt -> /8 -> byte/pkt
+
+---------------------------------------- KNET Solutions --------------------------------------------------
+*** Show mac address ***
+sudo ovs-appctl fdb/show s1

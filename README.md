@@ -45,6 +45,11 @@ cd in ryu directory and run this command to fix it or restart controller *PYTHON
 ###### 2. Ryu SDN Framework
 ###### 3. D-ITG Traffic Generator
 
+## Showing topology through SPEAR by NARMOX
+###### 1. using 'dump' command for listing switches detail
+###### 2. using 'links' command to checking topology's links
+###### 3. Generate graph for showing topology
+
 ## D-ITG Settup [Source - H1,H2,H3] [Destination - H4,H5,H6]
 1. ./ITGSend -a "Dest ip" -u 250 1000 -T UDP -t 60000
 2. .ITGRecv -l "File.log"

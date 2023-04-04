@@ -155,10 +155,19 @@ class SimpleSwitch13(simple_switch_13.SimpleSwitch13):
 
         for stat in sorted(body, key=attrgetter('port_no')):
             bw_util = ((stat.rx_bytes + stat.tx_bytes) / 1250000) * 100
-            if stat.port_no != 4294967294:
+            if stat.port_no != 4294967294 and bw_util < 60:
                 self.logger.info('Switch no. : %2d ', ev.msg.datapath.id)
                 self.logger.info('Port no. : %2d ', stat.port_no)
                 self.logger.info('Tx_data : %8d || Rx_data : %d', stat.tx_bytes, stat.rx_bytes)
                 self.logger.info('Bandwidth Utilization (10 Mbps) : %2f %%',bw_util)
+                self.logger.info('No Congestion : Normal Route !!')
+                self.logger.info('------------------------ END Monitor Switch no. : %2d ------------------------')
+                self.logger.info('                                                                              ')
+            elif stat.port_no != 4294967294 and bw_util >= 60:
+                self.logger.info('Switch no. : %2d ', ev.msg.datapath.id)
+                self.logger.info('Port no. : %2d ', stat.port_no)
+                self.logger.info('Tx_data : %8d || Rx_data : %d', stat.tx_bytes, stat.rx_bytes)
+                self.logger.info('Bandwidth Utilization (10 Mbps) : %2f %%',bw_util)
+                self.logger.info('Congestion Occurs : Re-Route !!')
                 self.logger.info('------------------------ END Monitor Switch no. : %2d ------------------------')
                 self.logger.info('                                                                              ')
